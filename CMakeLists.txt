@@ -8,11 +8,11 @@ find_package(Qt6 REQUIRED COMPONENTS Core Widgets Quick)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
-qt_add_executable(appqt_hieronymus_app
+qt_add_executable(qt_hieronymus_desktop_pets
     main.cpp
 )
 
-qt_add_qml_module(appqt_hieronymus_app
+qt_add_qml_module(qt_hieronymus_desktop_pets
     URI qt_hieronymus_app
     VERSION 1.0
     QML_FILES
@@ -28,17 +28,17 @@ qt_add_qml_module(appqt_hieronymus_app
         QML_FILES Avatar.qml
 )
 
-set_target_properties(appqt_hieronymus_app PROPERTIES
+set_target_properties(qt_hieronymus_desktop_pets PROPERTIES
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
 
-target_link_libraries(appqt_hieronymus_app
+target_link_libraries(qt_hieronymus_desktop_pets
     PRIVATE Qt6::Quick
 )
-target_link_libraries(appqt_hieronymus_app PRIVATE Qt6::Core Qt6::Widgets Qt6::Quick)
+target_link_libraries(qt_hieronymus_desktop_pets PRIVATE Qt6::Core Qt6::Widgets Qt6::Quick)
 
-install(TARGETS appqt_hieronymus_app
+install(TARGETS qt_hieronymus_desktop_pets
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

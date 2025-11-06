@@ -45,14 +45,26 @@ ApplicationWindow {
         }
 
         Item {
+            width: 230
+            height: 30
+            Text {
+                font.bold: true
+                color: "#FFFFFF"
+                font.pixelSize: 19
+                anchors.centerIn: parent
+                text: qsTr("Hieronymus Desktop Pet Tool")
+            }
+        }
+
+        Item {
             height: 70
             width: 230
             Button {
                 height: 60
                 width: 180
                 font.bold: true
-                font.pixelSize: 14
-                text: "Enter Hieronymus"
+                font.pixelSize: 17
+                text: "Open App Now"
                 anchors.centerIn: parent
                 onClicked: {
                     menuWindow.visible = !menuWindow.visible
