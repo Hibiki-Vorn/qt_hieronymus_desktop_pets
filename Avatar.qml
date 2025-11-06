@@ -16,7 +16,8 @@ Window {
 
     Component.onCompleted: {
         handler.setwWindowTranparent(avatar)
-        handler.disableWindowMaximum(mainWindow)
+        handler.startRotateImage(avatr_image)
+        handler.disableWindowMaximum(avatar)
     }
 
     Rectangle {
@@ -29,12 +30,12 @@ Window {
             onPressed: avatar.startSystemMove()
             hoverEnabled: true
                 onEntered: {
-                    avatr_image.shouldRotate = true
-                    handler.startRotateImage(avatr_image)
+                    avatr_image.shouldRotate = false
                 }
 
                 onExited: {
-                    avatr_image.shouldRotate = false
+                    avatr_image.shouldRotate = true
+                    handler.startRotateImage(avatr_image)
                 }
         }
 

@@ -19,26 +19,58 @@ Window {
     }
 
     Avatar {
-        id:avatar
+        id: avatar
         visible: false
     }
 
     Column {
         anchors.centerIn: parent
-        spacing: 10
+        spacing: 15
 
+        Rectangle {
+            width: 200
+            height: 240
+            radius: 20
+            color: "#2E2E2E" // Material.backgroundDimColor
+            border.color: "#4A4A4A"
+            border.width: 1
 
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onClicked: avatar.visible = !avatar.visible
+                onEntered: logoImage.opacity = 0.8
+                onExited: logoImage.opacity = 1.0
+            }
 
-        Image {
-            width: 100
-            height: 100
-            source: "logo.svg"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        avatar.visible = !avatar.visible
+            Column {
+                anchors.centerIn: parent
+                spacing: 12
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                Item {
+                    width: 160
+                    height: 160
+
+                    Image {
+                        id: logoImage
+                        anchors.fill: parent
+                        source: "logo.svg"
+                        fillMode: Image.PreserveAspectFit
                     }
                 }
+
+                Text {
+                    width: parent.width
+                    text: qsTr("Hieronymus")
+                    font.bold: true
+                    font.pixelSize: 22
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
         }
     }
 }
