@@ -1,9 +1,11 @@
+#include <QIcon>
 #include <QQmlContext>
+#include <QQuickWindow>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQuickWindow>
-#include <QIcon>
+
 #include "mainwindow_events.h"
+#include "naxida_actions.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,15 +15,13 @@ int main(int argc, char *argv[])
     MainWindowEvents handler;
     engine.rootContext()->setContextProperty("handler", &handler);
 
+    NaxidaActions naxidaHandler;
+    engine.rootContext()->setContextProperty("naxidaHandler", &naxidaHandler);
+
+    engine.rootContext()->setContextProperty("appPath", QCoreApplication::applicationDirPath());
+
     engine.loadFromModule("qt_hieronymus_app", "Main");
     QList<QObject*> roots = engine.rootObjects();
-    if (!roots.isEmpty()) {
-        QObject *root = roots.first();
-        QQuickWindow *window = qobject_cast<QQuickWindow *>(root);
-        if (window) {
-            window->setIcon(QIcon(":/qt/qml/qt_hieronymus_app/logo.svg"));
-        }
-    }
 
     return app.exec();
 }

@@ -15,7 +15,7 @@ Window {
     Material.accent: Material.Blue
 
     Component.onCompleted: {
-        handler.setwWindowTranparent(avatar)
+        handler.setWindowTranparent(avatar)
         handler.startRotateImage(avatr_image)
         handler.disableWindowMaximum(avatar)
     }
@@ -44,7 +44,7 @@ Window {
             width: 200
             height: 200
             anchors.centerIn: parent
-            source: "logo.png"
+            source: "file://"+appPath+"/assets/logo.png"
 
             property bool shouldRotate: false
             property int currentAngle: 0

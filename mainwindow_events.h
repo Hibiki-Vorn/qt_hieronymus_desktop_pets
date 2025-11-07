@@ -18,7 +18,7 @@ public:
     explicit MainWindowEvents(QQmlApplicationEngine* eng = nullptr, QObject *parent = nullptr)
         : QObject(parent), engine(eng) {}
 
-    Q_INVOKABLE void setwWindowTranparent(QQuickWindow* Window) {
+    Q_INVOKABLE void setWindowTranparent(QQuickWindow* Window) {
         if (!Window) return;
         Window->setFlags(Qt::FramelessWindowHint);
         Window->setColor(Qt::transparent);

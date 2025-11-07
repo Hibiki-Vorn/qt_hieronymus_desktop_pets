@@ -15,11 +15,16 @@ Window {
 
     Component.onCompleted:{
         handler.disableWindowMaximum(menuWindow)
-        handler.setWindowIcon(menuWindow, ":/qt/qml/qt_hieronymus_app/burger.svg")
+        handler.setWindowIcon(menuWindow, "assets/burger.svg")
     }
 
     Avatar {
         id: avatar
+        visible: false
+    }
+
+    Naxida {
+        id: naxida
         visible: false
     }
 
@@ -56,7 +61,53 @@ Window {
                     Image {
                         id: logoImage
                         anchors.fill: parent
-                        source: "logo.svg"
+                        source: "file://"+appPath+"/assets/logo.svg"
+                        fillMode: Image.PreserveAspectFit
+                    }
+                }
+
+                Text {
+                    width: parent.width
+                    text: qsTr("Hieronymus")
+                    font.bold: true
+                    font.pixelSize: 22
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
+        }
+
+        Rectangle {
+            width: 200
+            height: 240
+            radius: 20
+            color: "#2E2E2E"
+            border.color: "#4A4A4A"
+            border.width: 1
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onClicked: naxida.visible = !naxida.visible
+                onEntered: logoImage.opacity = 0.8
+                onExited: logoImage.opacity = 1.0
+            }
+
+            Column {
+                anchors.centerIn: parent
+                spacing: 12
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                Item {
+                    width: 160
+                    height: 160
+
+                    Image {
+                        id: naxidaImage
+                        anchors.fill: parent
+                        source: "file://"+appPath+"/assets/logo.svg"
                         fillMode: Image.PreserveAspectFit
                     }
                 }

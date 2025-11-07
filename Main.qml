@@ -19,7 +19,7 @@ ApplicationWindow {
 
     Component.onCompleted: {
         handler.disableWindowMaximum(mainWindow)
-        handler.setWindowIcon(menuWindow, ":/qt/qml/qt_hieronymus_app/logo.png")
+        handler.setWindowIcon(mainWindow, "assets/logo.png")
     }
 
     MenuWindow {
@@ -36,7 +36,7 @@ ApplicationWindow {
             height: 200
 
             Image {
-                source: "logo.svg"
+                source: "file://"+appPath+"/assets/logo.svg"
                 smooth: true
                 width: 200
                 height: 200
@@ -52,7 +52,7 @@ ApplicationWindow {
                 color: "#FFFFFF"
                 font.pixelSize: 19
                 anchors.centerIn: parent
-                text: qsTr("Hieronymus Desktop Pet Tool")
+                text: qsTr("Hieronymus Desktop Pets")
             }
         }
 
