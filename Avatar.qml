@@ -3,14 +3,18 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 
-Window {
+ApplicationWindow {
     id: avatar
     width: 300
     height: 300
+    minimumWidth: 300
+    minimumHeight: 300
+    maximumWidth: 300
+    maximumHeight: 300
+    title: "Menu"
     visible: true
     color: "transparent"
     flags: Qt.FramelessWindowHint
-    title: "Menu"
     Material.theme: Material.Dark
     Material.accent: Material.Blue
 

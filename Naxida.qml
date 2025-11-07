@@ -3,49 +3,31 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 
-Window {
+ApplicationWindow {
     id: naxida
     width: 200
     height: 200
+    minimumWidth: 200
+    minimumHeight: 200
+    maximumWidth: 200
+    maximumHeight: 200
     visible: true
-    color: "transparent"
-    flags: Qt.FramelessWindowHint
     title: "Menu"
-    Material.theme: Material.Dark
-    Material.accent: Material.Blue
+    color: "transparent"
 
-    Component.onCompleted: {
-        handler.setWindowTranparent(naxida)
-        handler.startRotateImage(naxida_image)
-        handler.disableWindowMaximum(naxida)
+    MouseArea {
+        anchors.fill: parent
+        onPressed: {
+            naxida.startSystemMove()
+        }
     }
 
-    Rectangle {
-        id: root
-        anchors.fill: parent
-        color: "transparent"
-
-        MouseArea {
-            anchors.fill: parent
-            onPressed: naxida.startSystemMove()
-            hoverEnabled: true
-                onEntered: {
-                }
-
-                onExited: {
-                }
-        }
-
-        Image {
-            id: naxida_image
-            width: 200
-            height: 200
-            anchors.centerIn: parent
-            source: "file://"+appPath+"/assets/nxd.png"
-
-            Component.onCompleted: {
-                //naxidaHandler.setNaxidaImg(naxida_image)
-            }
-        }
+    Image {
+        id: naxida_image
+        objectName: "naxida_image"
+        width: 200
+        height: 200
+        anchors.centerIn: parent
+        source: "file://"+appPath+"/assets/nxd.png"
     }
 }

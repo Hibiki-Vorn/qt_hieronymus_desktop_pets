@@ -3,15 +3,20 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import "."
 
-Window {
+ApplicationWindow {
     id: menuWindow
     title: "Menu"
     width: 305
     height: 500
+    minimumWidth: 305
+    minimumHeight: 500
+    maximumWidth: 305
+    maximumHeight: 500
     visible: false
+    flags: Qt.Window
+    color: Material.background
     Material.theme: Material.Dark
     Material.accent: Material.Blue
-    color: Material.background
 
     Component.onCompleted:{
         handler.disableWindowMaximum(menuWindow)
@@ -21,6 +26,9 @@ Window {
     Avatar {
         id: avatar
         visible: false
+
+        onXChanged: console.log("Avatar X变化:", x)
+        onYChanged: console.log("Avatar Y变化:", y)
     }
 
     Naxida {
@@ -36,7 +44,7 @@ Window {
             width: 200
             height: 240
             radius: 20
-            color: "#2E2E2E" // Material.backgroundDimColor
+            color: "#2E2E2E"
             border.color: "#4A4A4A"
             border.width: 1
 
@@ -107,14 +115,14 @@ Window {
                     Image {
                         id: naxidaImage
                         anchors.fill: parent
-                        source: "file://"+appPath+"/assets/logo.svg"
+                        source: "file://"+appPath+"/assets/nxd.png"
                         fillMode: Image.PreserveAspectFit
                     }
                 }
 
                 Text {
                     width: parent.width
-                    text: qsTr("Hieronymus")
+                    text: qsTr("Naxida")
                     font.bold: true
                     font.pixelSize: 22
                     color: "#FFFFFF"

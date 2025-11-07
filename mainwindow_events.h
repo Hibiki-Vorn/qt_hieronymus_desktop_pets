@@ -7,9 +7,14 @@
 #include <QPixmap>
 #include <QObject>
 #include <QTransform>
+#include <QQmlContext>
 #include <QQuickWindow>
-#include <QQmlApplicationEngine>
+#include <QQmlComponent>
+#include <QGuiApplication>
 #include <QQuickImageProvider>
+#include <QQmlApplicationEngine>
+
+#include "naxida_actions.h"
 
 class MainWindowEvents : public QObject{
     Q_OBJECT
@@ -55,6 +60,10 @@ public:
     Q_INVOKABLE void disableWindowMaximum(QQuickWindow* window) {
         if (!window) return;
         window->setFlags(window->flags() & ~Qt::WindowMaximizeButtonHint);
+    }
+
+    Q_INVOKABLE QPoint getWindowPos(QQuickWindow* window) {
+        return window->position();
     }
 
 private:
